@@ -1,0 +1,720 @@
+/**
+ * @name Lily's theme
+ * @author SEELE1306 modified by TheSillyLily
+ * @description A theme adding speech bubbles to discord and making some other small changes
+ * @license MIT
+ * @version 0.1
+ **/
+
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+
+/* -------------------- [[ START OF MAIN CSS FILE ]] -------------------- */
+
+:root {
+  /* [[ START OF CUSTOMIZABLE PARAMETERS ]] */
+  --font-main: "Inter";
+  --font-code: "Roboto Mono";
+  --modular-background-blur-strength: 5px;
+
+  --modular-sidebar-orientation: column;
+  --modular-guild-orientation: row;
+  --modular-memberlist-orientation: row;
+  --modular-friendlist-orientation: row;
+  --modular-flavor: "Rosebox";
+  --modular-version: "v2.1.2-20241231"; /* testing */
+  --modular-spotify-bg-blur: 5px; /* higher px = stronger blur, 0 = no blur */
+  --modular-spotify-darken: 0.25; /* 0 = album cover is not darkened, 1 = album cover is darkened fully (black) */
+
+  --modular-red: #bf616a;
+  --modular-yellow: #ebcb8b;
+  --modular-green: #a3be8c;
+  --modular-orange: #d08770;
+  --modular-teal: #b48ead;
+  --modular-blue: #88c0d0;
+
+  --modular-bg0: #262626; /* Primary background color */
+  --modular-bg1: #202020; /* Secondary background color */
+  --modular-bg2: #151515; /* Tertiary background color */
+  --modular-bg3: #323232; /* Quarterary background color */
+  --modular-bg4: #393939; /* Modifier/hover/select background color */
+
+  --modular-accent: var(--brand-600); /* Accent color */
+
+  --modular-text0: #d8c8c4; /* Normal text color */
+  --modular-text1: #f6f1ef; /* Brighter text color */
+  --modular-text2: #cab5b1; /* Darker text color */
+
+  --modular-cb-width: fit-content; /* 100% for chat bubbles spanning the entire screen / fit-content for dynamic width, Default is fit-content */
+}
+
+/* [[ END OF CUSTOMIZABLE PARAMETERS ]] */
+
+
+/* [[ CHAT BUBBLES ]] */
+/* ShowMeYourName plugin */
+.vc-smyn-suffix {
+  color: currentColor !important;
+  opacity: 0.5;
+
+  &::before {
+    content: "| @" !important;
+  }
+
+  &::after {
+    content: "" !important;
+  }
+}
+
+/* Username */
+.cozy_c19a55 .header_c19a55 {
+  margin-bottom: 4px;
+}
+
+/* Fix avatars being all over the place */
+.message__5126c.hasReply_c19a55 .avatar_c19a55 {
+  top: 24px;
+}
+
+.message__5126c:not(.hasReply_c19a55) .avatar_c19a55 {
+  top: 0;
+}
+
+/* Username */
+.username_c19a55,
+.base_b88801 .text_b88801 strong,
+.name__841c8,
+.mention.interactive,
+[class^="repliedMessage_"] > .username_c19a55,
+.member__5d473 .username_d272d6 {
+  background: color-mix(in srgb, currentColor 30%, var(--background-floating));
+  font-weight: bold;
+  margin-right: 4px;
+  padding: 0 6px;
+  border-radius: 6px;
+  display: inline-flex;
+
+  &:hover {
+    text-decoration: none;
+    background: color-mix(in srgb, currentColor 50%, var(--background-floating));
+  }
+}
+
+.username_c19a55::after {
+  position: relative;
+  margin: 0 0 0 8px;
+  color: inherit 50% transparent;
+}
+
+/* Fix overflow on replied pings */
+.repliedTextPreview_c19a55 {
+  max-height: fit-content;
+}
+.TextPreview_c19a55 {
+  max-height: fit-content;
+}
+
+/* Timestamps */
+@font-face {
+  font-family: "Blank Dot";
+  src: url("https://raw.githubusercontent.com/adobe-fonts/adobe-blank/master/AdobeBlank.ttf.woff");
+  unicode-range: U+2022;
+}
+
+[class*="timestampInline_"],
+.vc-reply-timestamp {
+  font-family: "Blank Dot", var(--font-primary);
+  position: relative;
+  color: var(--primary-100) !important;
+  letter-spacing: 0.05em;
+  font-size: 10px !important;
+  margin: 0 4px;
+  height: 16px;
+  border-radius: 4px;
+  top: -2px;
+  max-width: fit-content;
+  line-height: 1rem !important;
+
+  &:not(:has(time)) {
+    background: #bbbbbb;
+    padding: 0 4px 0 2px;
+  }
+
+  &:has(time) {
+    background: #bbbbbb;
+    padding: 0 4px;
+  }
+}
+
+/* Align timestamps in replies */
+.vc-reply-timestamp {
+  text-align: center;
+  margin-right: 8px;
+  margin-left: 0;
+  top: 0;
+}
+
+.contents_c19a55 [class^="botTagCozy_"] {
+  border-radius: 4px;
+  height: 16px;
+  top: 2px;
+}
+
+/* Start of Chat Bubbles */
+.mediaAttachmentsContainer__242e2 {
+  margin-bottom: 0 !important;
+}
+
+.altText__0f481 {
+  margin: 8px 0 -4px;
+}
+
+
+
+.groupStart__5126c.cozyMessage__5126c
+  > .contents_c19a55:hover
+  .markup__75297.messageContent_c19a55
+  a,
+.cozyMessage__5126c:not(.groupStart__5126c)
+  > .contents_c19a55:hover
+  > .markup__75297:not(:empty, .searchResultsWrap_a9e706 *)
+  a {
+  background: var(--background-modifier-hover);
+  text-decoration: none;
+}
+
+.groupStart__5126c.cozyMessage__5126c > .contents_c19a55,
+.cozyMessage__5126c:not(.groupStart__5126c)
+  > .contents_c19a55
+  > .markup__75297:not(:empty, .searchResultsWrap_a9e706 *),
+.container_b7e1cb > :not(.reactions__23977, .searchResultsWrap_a9e706 *) {
+
+  transform: translate(0px);
+  margin-top: 8px;
+  margin: 0;
+  padding: 10px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--chat-bubble-default) 25%, transparent);
+  max-width: var(--modular-cb-width, max-content);
+  box-sizing: border-box;
+  transition: padding 0.5s, transform 0.25s;
+  transition-timing-function: ease;
+  &:hover {
+    background: color-mix(in srgb, var(--chat-bubble-default) 50%, transparent);
+    border-radius: 15px;
+    transform: scalex(102%) scaley(101%);
+  }
+}
+.avatar_c19a55, .avatarDecoration_c19a55 {
+    transition: transform 0.25s;
+    transform: translate(-70px);
+}
+
+.chatContent_f75fb0 {
+  box-sizing: border-box;
+  overflow: hidden;
+  background: transparent;
+
+
+  margin: 4px;
+  border-radius: 8px;
+}
+
+
+/* [[ EMBEDS ]] */
+.embedFull__623de {
+  overflow: hidden;
+  border-left: none;
+  z-index: 0;
+  background: inherit;
+  margin-top: 8px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    display: block;
+    height: 100%;
+    border-right: 100vw solid transparent;
+    border-color: inherit;
+    opacity: 0.5;
+    z-index: -1;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: #00000099 !important;
+    opacity: 0.5;
+    z-index: -1;
+    background: inherit;
+  }
+}
+
+/* [[ PLATFORM INDICATORS ]] */
+:is(.membersWrap_c8ffbb, .privateChannels__35e86) .vc-platform-indicator > svg {
+  margin: 0 2px;
+}
+
+/* Fix rewrite of platform indicators */
+.vc-platform-indicator {
+  & > svg {
+    width: 14px !important;
+    height: 14px !important;
+    margin-top: 2px;
+
+    &[fill="#23a55a"] {
+      fill: var(--modular-green);
+    }
+
+    &[fill="#f0b232"] {
+      fill: var(--modular-yellow);
+    }
+
+    &[fill="#f23f43"] {
+      fill: var(--modular-red);
+    }
+
+    &[data-tag="bot"] {
+      fill: var(--modular-blue);
+    }
+  }
+}
+
+/* [[ TOOLTIPS ]] */
+.reactionTooltip-3IOBwg {
+  background: var(--background-floating) !important;
+}
+
+.theme-dark .tooltip__382e7,
+.toolbar_bba883 {
+  background: var(--background-floating);
+}
+
+/* normal tooltips */
+.theme-dark [class*="tooltipTop"] .tooltipPointer__382e7 {
+  border-top-color: var(--modular-accent);
+  scale: 1.5;
+  margin-top: 4px;
+}
+
+.theme-dark [class*="tooltipBottom"] .tooltipPointer__382e7 {
+  border-top-color: var(--modular-accent);
+  scale: 1.5;
+  margin-bottom: 4px;
+}
+
+/* guild tooltip */
+.theme-dark [class*="tooltipRight"] .tooltipPointer__382e7 {
+  border-top-color: var(--modular-accent);
+  scale: 1.5;
+  left: -14px;
+}
+
+.theme-dark [class*="tooltipLeft"] .tooltipPointer__382e7 {
+  border-top-color: var(--modular-accent);
+  scale: 1.5;
+  margin-left: 5px;
+}
+
+.tooltipContent__382e7 {
+  padding: 4px 12px;
+  margin-bottom: 4px;
+}
+
+/* text options tooltip */
+.toolbar_bba883:before {
+  border-top-color: var(--modular-accent);
+}
+
+/* [[ MEMBERS LIST ]] */
+.members_c8ffbb {
+  background: var(--background-primary);
+
+  margin: 0x;
+  border-radius: 8px;
+}
+
+.memberInner__5d473 {
+  border-radius: 8px;
+}
+
+.vc-membercount-member-list {
+  margin: 8px 0 8px 8px !important;
+  padding: 8px;
+  align-items: center;
+  border-radius: 8px;
+  background: var(--background-floating);
+
+  & span {
+    font-weight: bold;
+  }
+}
+
+.content_f75fb0.container__0b563 {
+  padding: 8px;
+  flex-direction: column;
+  margin: 4px;
+  border-radius: 8px;
+
+  background: var(--background-primary) !important;
+}
+
+.scrollerContainer_c6b11b {
+  background: transparent !important;
+}
+
+/* [[ INBOX TAB ]] */
+[class*="messagesPopoutWrap_"],
+[class*="recentMentionsPopout_"] {
+  height: 80vh;
+}
+
+[class*="recentMentionsPopout_"] .channelHeader__35a7e {
+  margin: 0 0 4px 0;
+  padding: 0 8px 0 20px;
+}
+
+.container__95796 .channelHeader__35a7e {
+  margin-left: 16px;
+  margin-bottom: 4px;
+  border-radius: 8px;
+}
+
+/* Fix avatar decoration position */
+.avatarDecoration_c19a55 {
+  top: 0;
+}
+
+.message__5126c.hasReply_c19a55 .avatarDecoration_c19a55 {
+  top: 24px;
+}
+
+/* Members list */
+.membersGroup_c8ffbb {
+  margin: 0px 0px 18px 8px;
+  padding-bottom: 10px;
+  background: var(--background);
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Random Rubbish, a.k.a. Lily's additions :P */
+.mainContent__29444 {
+  margin: 10px;
+}
+
+.stack_dbd263 {
+  height: auto !important;
+}
+
+.chat_f75fb0 {
+  position: absolute;
+  width:100%;
+  height: 99.9%
+}
+
+.sidebar_c48ade {
+  position: absolute;
+  left: 0px;
+}
+
+.containerDefault__29444{
+  position: relative;
+  left: 0px;
+}
+
+.bar_c38106 {
+  position: relative;
+  height: 0px;
+  float: left;
+}
+
+
+.name__2ea32 {
+  text-align: left;
+}
+
+.title_c38106 {
+  position: relative;
+  left: -70px;
+  float: left;
+}
+
+.spine__5b40b {
+  width: 0px;
+}
+
+
+
+.repliedMessage_c19a55 {
+  & :hover{
+    background: var(--chat-bubble-default);
+  }
+  padding-bottom: 5px
+}
+
+
+.repliedMessage_c19a55 {
+
+  transform: translate(0px);
+  margin: 0;
+  padding: 5px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--chat-bubble-default) 25%, transparent);
+  max-width: var(--modular-cb-width, max-content);
+  box-sizing: border-box;
+  transition: padding 0.5s, transform 0.25s;
+  transition-timing-function: ease;
+  &:hover {
+    background: color-mix(in srgb, var(--chat-bubble-default) 50%, transparent);
+    border-radius: 15px;
+    transform: scalex(102%) scaley(101%);
+  }
+}
+.messageListItem__5126c {
+  border-radius: 10px;
+}
+
+.pointerCover_d125d2 {
+  width: 0px
+}
+
+.blobContainer_e5445c, .listItemWrapper__91816 {
+
+  transform: translate(0px);
+  padding: 5px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--chat-bubble-default) 25%, transparent);
+  max-width: var(--modular-cb-width, max-content);
+  box-sizing: border-box;
+  transition: padding 0.5s, transform 0.25s, border-radius 0.25s, margin-left 0.5s;
+  transition-timing-function: ease;
+  &:hover {
+    padding: 10px;
+    background: color-mix(in srgb, var(--chat-bubble-default) 50%, transparent);
+    border-radius: 15px;
+    transform: scale(100%);
+  }
+}
+
+.selected_e5445c, .selected__91816 {
+	padding: 10px !important;
+    background: color-mix(in srgb, var(--chat-bubble-default) 50%, transparent) !important;
+    border-radius: 15px !important;
+    transform: scale(100%) !important;	
+}
+
+.interactive_bf202d, .interactive__972a0{
+
+  transform: translate(0px);
+  margin-left: 0px !important;
+  margin-right:0px !important;
+  margin: 2px;
+  padding: 2px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--chat-bubble-default) 25%, transparent);
+  max-width: 100%;
+  box-sizing: border-box;
+  transition: padding 0.5s, transform 0.25s, border-radius 0.25s;
+  transition-timing-function: ease;
+  &:hover {
+    padding-left: 0px;
+    padding-right: 0px;
+	padding: 5px;
+    background: color-mix(in srgb, var(--chat-bubble-default) 50%, transparent);
+    border-radius: 15px;
+    transform: scalex(102%) scaley(101%);
+  }
+}
+
+.interactiveSelected__972a0, .selected_bf202d {
+    padding-left: 0px;
+    padding-right: 0px;
+	padding: 5px;
+    background: color-mix(in srgb, var(--chat-bubble-default) 50%, transparent);
+    border-radius: 15px;
+    transform: scalex(102%) scaley(101%);
+}
+
+.containerDefault_c69b6d {
+
+  transform: translate(0px);
+  margin: 10px;
+  padding: 2px;
+  border-radius: 10px;
+    background: color-mix(in srgb, var(--chat-bubble-default) 50%, transparent);
+  max-width: 100% !important;
+  box-sizing: border-box;
+  transition: padding 0.5s, transform 0.25s, border-radius 0.25s;
+  transition-timing-function: ease;
+  &:hover {
+    padding: 10px;
+    background: color-mix(in srgb, var(--chat-bubble-default) 50%, transparent);
+    border-radius: 15px;
+    transform: scale(105%);
+  }
+}
+
+.selected_c69b6d {
+	padding: 10px;
+    background: color-mix(in srgb, var(--chat-bubble-default) 50%, transparent);
+    border-radius: 15px;
+    transform: scale(105%);
+}
+
+.link__2ea32 {
+	padding: 0px;
+    background: transparent !important;
+    border-radius: 15px;
+    transform: scale(105%);
+}
+
+.panels_c48ade {
+  
+  transform: translate(0px);
+  margin: 6px;
+  padding: 0px !important;
+  border-radius: 10px!important;
+  transition: padding 0.5s, transform 0.25s, border-radius 0.25s, margin-left 0.5s !important;
+  transition-timing-function: ease !important;
+  height: auto;
+  &:hover {
+    padding: 5px !important;
+    border-radius: 15px!important;
+    transform: scale(100%);
+  }
+}
+ .scrollableContainer__74017, .themedBackground__74017 {
+
+	transform: translate(0px);
+	margin: 0px;
+	padding: 5px;
+	border-radius: 10px;
+	background: transparent;
+	max-width: 100% !important;
+	box-sizing: border-box;
+	transition: padding 0.5s, transform 0.25s, border-radius 0.25s;
+	transition-timing-function: ease;
+	&:hover {
+		padding: 10px;
+		background: transparent;
+		border-radius: 15px;
+		transform: scale(101%);
+	}
+}
+
+.childContainer__91a9d {
+
+  transform: translate(0px);
+  padding: 5px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--chat-bubble-default) 25%, transparent);
+  transition: padding 0.5s, transform 0.25s, border-radius 0.25s, margin-left 0.5s;
+  transition-timing-function: ease;
+  &:hover {
+    padding: 10px;
+    background: color-mix(in srgb, var(--chat-bubble-default) 50%, transparent);
+    border-radius: 15px;
+    transform: scale(100%);
+  }
+}
+
+.channelInfo_c69b6d {
+  position: relative;
+  left: -10px
+}
+
+.unread__2ea32,
+.unreadImportant__2ea32 {
+  position:fixed;
+
+}
+
+.overlay_c0bea0 {
+
+  transform: translate(0px);
+  padding: 12px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--chat-bubble-default) 25%, transparent);
+  transition: padding 0.5s, transform 0.25s, border-radius 0.25s, margin-left 0.5s;
+  transition-timing-function: ease;
+  &:hover {
+    padding: 18px;
+    background: color-mix(in srgb, var(--chat-bubble-default) 50%, transparent);
+    border-radius: 15px;
+    transform: scale(100%);
+  }
+}
+
+.item_b3f026 {
+  
+  transform: translate(0px);
+  margin: 0px;
+  padding: 10px !important;
+  border-radius: 10px;
+  background: color-mix(in srgb, 100% 25%, transparent);
+  transition: padding 0.5s, transform 0.25s, border-radius 0.25s, margin-left 0.5s !important;
+  transition-timing-function: ease !important;
+  height: auto;
+  &:hover {
+    padding: 15px !important;
+    background: color-mix(in srgb, var(--chat-bubble-default) 50%, transparent);
+    border-radius: 15px;
+    transform: scale(100%);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- CUSTOMIZABLE --- */
+
+:root {
+  /* [[ DISCORD COLORS ]] */
+  --modular-red: #bf616a;
+  --modular-yellow: #ebcb8b;
+  --modular-green: #a3be8c;
+  --modular-orange: #d08770;
+  --modular-teal: #b48ead;
+  --modular-blue: #88c0d0;
+
+  /* [[ BASE COLORS ]] */
+  --modular-bg0: #262626; /* Primary background color */
+  --modular-bg1: #202020; /* Secondary background color */
+  --modular-bg2: #151515; /* Tertiary background color */
+  --modular-bg3: #323232; /* Quarterary background color */
+  --modular-bg4: #393939; /* Modifier/hover/select background color */
+
+  --modular-text0: #d8c8c4; /* Normal text color */
+  --modular-text1: #f6f1ef; /* Brighter text color */
+  --modular-text2: #cab5b1; /* Darker text color */
+
+  /* [[ CHAT BUBBLES ]] */
+  --chat-bubble-default: #555555;
+  --modular-cb-width: max-content; /* 100% for chat bubbles spanning the entire screen / max-content for dynamic width, Default is max-content */
+
+  /* [[ FONT CHANGE ]] */
+  --font-main: "Inter";
+  --font-code: "Roboto Mono";
+
+}
+
+/* --- THIRD PARTY IMPORTS --- */
+/* Should you want to use snippets, place them here */
