@@ -3,7 +3,7 @@
  * @author SEELE1306 modified by TheSillyLily
  * @description A theme adding speech bubbles to discord and making some other small changes
  * @license MIT
- * @version 0.2 indev
+ * @version 0.2
  **/
 
 /* Fonts */
@@ -888,6 +888,10 @@
   width: auto !important;
 } 
 
+.container__37e49{
+  height: 70px !important;
+}
+
 .visual-refresh section.panels_c48ade {
   left: calc(var(--custom-guild-list-width));
   width: calc(100% - var(--custom-guild-list-width) - 20px);
@@ -913,7 +917,6 @@ nav.guilds_c48ade {
 .wrapper__14245, .emojiListRow_fc7141  {
   margin-left: -15px
 }
-
 
 
 
